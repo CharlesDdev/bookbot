@@ -1,2 +1,17 @@
 /books
-__pycache__
+# Python-specific ignored files
+venv/
+__pycache__/
+*.pyc
+
+# IDE-specific ignored files (for VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Operating system and editor junk files
+.DS_Store
+*.swp
+*~
+
+# Google Cloud temp files and build artifacts
+.gcloud/
