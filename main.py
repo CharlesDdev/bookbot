@@ -1,19 +1,31 @@
-from stats import count_words
-from stats import character_count
+import sys
+from pathlib import Path
+
+from stats import count_words, character_count, chars_dict_to_sorted_list
 
 def get_book_text(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         return file.read()
 
 def main():
-    text = get_book_text('books/frankenstein.txt')
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_path = Path(sys.argv[1])
+    text = get_book_text(book_path)
     num_words = count_words(text)
     char_counts = character_count(text)
-    
-    print(f"{num_words} words found in the document")
-    print(char_counts)
-    
+    sorted_list = chars_dict_to_sorted_list(char_counts)
 
+    print(f"--- Begin report of {book_path} ---")
+    print(f"Found {num_words} total words")
+    print()
+    
+    for item in sorted_list:
+        print(f"{item['char']}: {item['num']}")
+    
+    print("--- End report ---")
     
 if __name__ == "__main__":
     main()
