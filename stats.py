@@ -5,7 +5,7 @@ def character_count(text):
     text = text.lower()
     counts = {}
     for char in text:
-        if char.isalpha() and "a" <= char <= "z":
+        if char.isalpha():
             counts[char] = counts.get(char, 0) + 1
     return counts
 

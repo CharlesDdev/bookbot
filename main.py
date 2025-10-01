@@ -16,16 +16,18 @@ def main():
     text = get_book_text(book_path)
     num_words = count_words(text)
     char_counts = character_count(text)
-    sorted_list = chars_dict_to_sorted_list(char_counts)
+    sorted_char_counts = chars_dict_to_sorted_list(char_counts)
 
-    print(f"--- Begin report of {book_path} ---")
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_path}...")
+    print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
-    print()
-    
-    for item in sorted_list:
+    print("--------- Character Count -------")
+
+    for item in sorted_char_counts:
         print(f"{item['char']}: {item['num']}")
-    
-    print("--- End report ---")
+
+    print("============= END ===============")
     
 if __name__ == "__main__":
     main()
